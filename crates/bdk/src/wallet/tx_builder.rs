@@ -184,6 +184,7 @@ impl<'a, D, Cs: Clone, Ctx> Clone for TxBuilder<'a, D, Cs, Ctx> {
 // methods supported by both contexts, for any CoinSelectionAlgorithm
 impl<'a, D, Cs: CoinSelectionAlgorithm, Ctx: TxBuilderContext> TxBuilder<'a, D, Cs, Ctx> {
     /// Set a custom fee rate
+    /// The fee_rate method refers to the fee rate in satoshis/vbyte (sats/vbyte).
     pub fn fee_rate(&mut self, fee_rate: FeeRate) -> &mut Self {
         self.params.fee_policy = Some(FeePolicy::FeeRate(fee_rate));
         self
